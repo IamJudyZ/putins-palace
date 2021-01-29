@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Putin's Palace : UPSTAIRS</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        
+        <div class="upstairsdiv">
+        <img class="container" src='top.jpg'/>
+        <div class="return toplabel">Full map</div>
+        
+        
+        <div class="down bottomlabel"><a href="middle.html">Go downstairs</a></div>
+        
+        <div class="infos">
+            <div class="blocks">
+                <div class="hoverblock clickable" id="box-first" data-id= "courtyard"></div>
+                <div class="hoverblock clickable" id="box-second" data-id= "somethingelse"></div>
+                <!-- could use data attribute  -->
+            </div>
+            <!-- <div class="description"> -->
+                <div class="hide descrblock" data-id="courtyard">
+                    <h1>The Courtyard</h1>
+                    <img class="imghighlight" src="courtyard.jpg"/>
+                    <p>Digital reconstruction of the courtyard of 'Putin's Palace,' as seen in a January 17 YouTube video posted by Alexei Navalny.</p>
+                </div>
+                <div class="hide descrblock" data-id="somethingelse">
+                    <h1>Something else</h1>
+                    <img class="imghighlight" src="courtyard.jpg"/>
+                    <p>Digital reconstruction of the courtyard of 'Putin's Palace,' as seen in a January 17 YouTube video posted by Alexei Navalny.</p>
+                </div>
+            <!-- </div> -->
+            
+        </div>
+    
+    
+    
+    
+    
+    </div>
+        
+        <script>
+
+            // Add an event listener for document click
+            document.addEventListener('click', tabClick);
+
+            // Define a function that filters the unwanted click events on the document
+            function tabClick(event) {
+                var elem = event.target,
+                    elemID = elem.getAttribute('id'),
+                    //tabs = document.querySelectorAll('.blocks'),
+                    //tabContents = document.querySelectorAll('.description'),
+                    hidden = document.querySelectorAll('.hide');
+                    elemDataID = elem.getAttribute('data-id');
+                    //elemDataID= elem.dataset.id;
+                    //dataID = document.querySelectorAll('data-id');
+
+
+                // If we click an element whos href contains "tab-", proceed
+                if (elemID != null && elemID.indexOf('box-') != -1) {
+                    //event.preventDefault();
+                    
+                    var image = document.querySelector('.container');
+                    image.classList.toggle('smallerimage');
+                    var box = document.getElementsByClassName("hoverblock");
+                    for (let i = 0; i<box.length; i++) {
+                        box[i].classList.toggle('hide');
+                    }
+                    
+
+                    for (let a = 0; a<hidden.length; a++) {
+                        // hidden[a].classList.toggle('hide');
+                        var id = hidden[a].getAttribute('data-id');
+                        console.log(a);
+                        console.log(id);
+                        console.log(elemDataID);
+                        if (id == elemDataID) {
+                            console.log('match');
+                            hidden[a].classList.toggle('hide');
+                            hidden[a].classList.add('active');
+                            //hidden[a].classList.remove('hide');
+                            //hidden[a].classList.add('show');
+                        }
+                        console.log(" ");
+
+                    }
+
+                    //hidden[0].classList.toggle('hide');
+                    
+                    //tabContents[0].classList.remove('hide');
+                    //hidden[0].style.display = 'block';
+
+                    //console.log("hello");
+                    //tabContents[0].classList.add('show');
+                }
+            }
+
+
+
+
+
+            // var blocks = document.querySelectorAll(".hoverblock");
+
+            // for (let i = 0; i<blocks.length; i++) {
+            // }
+
+            // document.querySelector('.clickable').onclick = function() {
+            //     var image = document.querySelector('.container');
+            //     image.classList.toggle('smallerimage');
+            //     var box = document.getElementsByClassName("hoverblock");
+            //     for (let i = 0; i<box.length; i++) {
+            //         box[i].classList.toggle('hide');
+            //     }
+            //     // box[0].classList.toggle('hide');
+            // }
+
+            document.querySelector('.return').onclick = function() {
+                var image = document.querySelector('.container');
+                image.classList.toggle('smallerimage');
+                var box = document.getElementsByClassName("hoverblock");
+                //var descr = document.getElementsByClassName("description");
+                var descr = document.querySelectorAll('.descrblock');
+                for (let i = 0; i<box.length; i++) {
+                    box[i].classList.toggle('hide');
+                }
+
+
+
+                for (let a = 0; a<descr.length; a++) {
+                    if (descr[a].classList.contains('active')) {
+                        descr[a].classList.toggle('hide');
+                        descr[a].classList.remove('active');
+                    }
+                    
+                    //descr[a].classList.add('hide');
+                }
+
+            }
+
+        </script>
+    </body>
+</html>
+
+
+<!-- 
+
+
+<script>
+    let rectDivs = document.querySelectorAll(".container")
+    let projectName = document.querySelectorAll(".heading")
+    let projectLists = document.querySelectorAll(".projectlist")
+    let mainHiddenElems = document.querySelectorAll(".hiddenelement")
+    let aboutToHide = document.getElementById("aboutlink")
+    let homeToHide = document.getElementById("homelink")
+    let projectsToHide = document.getElementById("projectlink")
+
+
+    for(let i = 0; i < rectDivs.length; i++){
+
+        projectName[i].onclick = function(event){
+            ourHeading = event.currentTarget
+
+            if(ourHeading.nextElementSibling.classList.contains('hide')){
+                chooseProjectCategory(ourHeading)
+
+        } else {
+            homeToHide.style.display = 'none';
+            aboutToHide.style.display = 'block';
+            projectsToHide.style.display = 'block';
+            for(let i = 0; i < projectName.length; i++){
+                projectName[i].style.display = 'block';
+                if(i > 0){
+                    projectLists[i].classList.add('hide')
+                } else {
+                    projectLists[i].classList.remove('hide')
+                }
+            }
+            ourHeading.children[1].classList.remove('hide')
+
+            for(let i = 0; i < mainHiddenElems.length; i++){
+                    mainHiddenElems[i].classList.add('hide')
+            }
+        }
+
+        homeToHide.onclick = function(event){
+            homeButtonAction()
+        }
+
+        }
+    }
+
+    function chooseProjectCategory(target){
+        aboutToHide.style.display = 'none';
+        projectsToHide.style.display = 'none';
+        homeToHide.style.display = 'block';
+
+        for(let m = 0; m < projectName.length; m++){
+            projectName[m].style.display = 'none';
+            projectLists[m].classList.add('hide')
+        }
+        target.style.display = 'block';
+        target.nextElementSibling.classList.remove('hide')
+
+        // HEADING ARROW
+        // target.children[0].classList.remove('hide')
+        target.children[1].classList.add('hide')
+
+        for(let n = 0; n < mainHiddenElems.length; n++){
+            if(mainHiddenElems[n].dataset.id == target.dataset.id){
+                mainHiddenElems[n].classList.remove('hide')
+
+                let visiblePrjSpan = target.nextElementSibling.querySelectorAll('.project')
+                let hiddenPrjSpan = document.querySelectorAll('.hiddenproject')
+                for(let k = 0; k < visiblePrjSpan.length; k++){
+
+                    if (!window.matchMedia("(hover: none)").matches) {
+
+                    visiblePrjSpan[k].onmouseover = function(event){
+                        // homeToHide.style.display = 'none';
+
+                        for(let j = 0; j < hiddenPrjSpan.length; j++){
+                            console.log(hiddenPrjSpan[j])
+                            if(hiddenPrjSpan[j].dataset.projectid == visiblePrjSpan[k].dataset.projectid){
+                                hiddenPrjSpan[j].classList.remove('hide')
+                            }
+                        }
+                    }
+                    // hide
+                    visiblePrjSpan[k].onmouseout = function(event){
+                        // homeToHide.style.display = 'block';
+                        for(let j = 0; j < hiddenPrjSpan.length; j++){
+                                hiddenPrjSpan[j].classList.add('hide')
+                        }
+                    }
+                }
+                }
+            }
+        }
+    }
+
+    function homeButtonAction(){
+        // window.sessionStorage.removeItem("pagestate");
+        homeToHide.style.display = 'none';
+        aboutToHide.style.display = 'block';
+        projectsToHide.style.display = 'block';
+        for(let i = 0; i < projectName.length; i++){
+            projectName[i].style.display = 'block';
+            if(i > 0){
+                projectLists[i].classList.add('hide')
+                projectName[i].children[0].classList.add('hide')
+                projectName[i].children[1].classList.remove('hide')
+            } else {
+                projectLists[i].classList.remove('hide')
+            }
+        }
+
+        for(let i = 0; i < mainHiddenElems.length; i++){
+                mainHiddenElems[i].classList.add('hide')
+        }
+    }
+
+</script> -->

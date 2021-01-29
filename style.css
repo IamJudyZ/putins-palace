@@ -1,0 +1,175 @@
+@charset "UTF-8";
+
+* {
+    box-sizing:border-box;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+#up:hover {
+    color:rgb(74, 106, 76);
+    
+}
+
+#middle:hover {
+    color: rgb(156, 139, 124);
+}
+
+#down:hover {
+    color:rgb(113, 160, 200);
+}
+
+.maindiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border-bottom: 5px solid white; */
+    height: 34%;
+    text-transform: lowercase;
+    font-family: Roboto, Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.upstairsdiv {
+
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+}
+
+.blue {
+    background-color: rgb(157, 194, 216);
+}
+
+.green {
+    background-color:rgb(164, 171, 124);
+}
+
+
+.beige {
+    background-color: rgb(214, 209, 205);
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width:auto;
+    height:90%;
+    margin:auto;
+}
+
+.smallerimage {
+    top: 10px;
+    left: 0;
+    transform: translate(0, 0);
+    height: auto;
+    width: 40%;
+    z-index: -10;
+}
+
+/* button {
+    position: absolute;
+    right: 0;
+} */
+
+
+#box-first {
+    position: absolute;
+    /* opacity: 10%; */
+    top: 35%;
+    left: 36%;
+    width: 300px;
+    height: 200px;
+    background-color:rgb(157, 194, 216);
+}
+
+#box-second {
+    position: absolute;
+    /* opacity: 10%; */
+    top: 50%;
+    left: 60%;
+    width: 100px;
+    height: 50px;
+    background-color:rgb(157, 194, 216);
+
+}
+
+.hoverblock {
+    opacity: 10%;
+}
+
+.hoverblock:hover {
+    opacity: 50%;
+    cursor: pointer;
+}
+
+
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.toplabel {
+    height: 40px;
+    /* text-align: center;
+    vertical-align: middle; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: aquamarine;
+
+}
+
+.bottomlabel {
+    height: 40px;
+    width: 100%;
+    /* text-align: center;
+    vertical-align: middle; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    background-color: aquamarine;
+    cursor: pointer;
+}
+
+.description {
+    width: 50%;
+    height: auto;
+    right: 0;
+
+}
+
+.imghighlight {
+    width: 100%;
+    height: auto;
+}
+
+.descrblock {
+    position: absolute;
+    width: 55%;
+    height: auto;
+    top: 5%;
+    right: 0;
+    margin: 30px;
+    /* border: 1px solid black; */
+}
